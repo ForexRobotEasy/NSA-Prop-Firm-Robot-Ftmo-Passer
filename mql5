@@ -1,0 +1,174 @@
+mql5
+// NSA Prop Firm Robot Ftmo Passer
+// Developer's site: forexroboteasy.com
+// Development by: Forex Robot Easy Team
+
+// Include necessary libraries
+#include <Trade\Trade.mqh>
+
+// Define input parameters
+input string InputSymbol = 'XAUUSD'; // Trading symbol
+input ENUM_TIMEFRAMES InputTimeframe = PERIOD_H1; // Chart timeframe
+
+// Define global variables
+bool IsTradingEnabled = false; // Flag to enable/disable trading
+
+// Initialize Trade class object
+CTrade Trade;
+
+// Custom function to enable trading
+void EnableTrading()
+{
+    IsTradingEnabled = true;
+}
+
+// Custom function to disable trading
+void DisableTrading()
+{
+    IsTradingEnabled = false;
+}
+
+// Custom function to check if market is open
+bool IsMarketOpen()
+{
+    datetime currentTime = TimeCurrent();
+    datetime marketOpenTime = StrToTime('00:00');
+    datetime marketCloseTime = StrToTime('12:00');
+
+    if (currentTime >= marketOpenTime && currentTime <= marketCloseTime)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+// Custom function to analyze and optimize forex strategies
+void AnalyzeForexStrategies()
+{
+    // Add code here to analyze and optimize forex strategies
+}
+
+// Custom function to enhance market analysis
+void EnhanceMarketAnalysis()
+{
+    // Add code here to enhance market analysis
+}
+
+// Custom function to optimize trading opportunities
+void OptimizeTradingOpportunities()
+{
+    // Add code here to optimize trading opportunities
+}
+
+// Custom function to streamline setup process
+void StreamlineSetupProcess()
+{
+    // Add code here to streamline setup process
+}
+
+// Custom function to execute trading logic
+void ExecuteTradingLogic()
+{
+    // Add code here to execute trading logic
+}
+
+// Custom function to handle trading events
+void OnTrade()
+{
+    // Add code here to handle trading events
+}
+
+// Custom function to handle chart events
+void OnChartEvent(const int id, const long& lparam, const double& dparam, const string& sparam)
+{
+    // Add code here to handle chart events
+}
+
+// Custom function to start the robot
+void StartRobot()
+{
+    // Enable trading
+    EnableTrading();
+
+    // Streamline setup process
+    StreamlineSetupProcess();
+
+    // Check if market is open
+    if (IsMarketOpen())
+    {
+        // Analyze and optimize forex strategies
+        AnalyzeForexStrategies();
+
+        // Enhance market analysis
+        EnhanceMarketAnalysis();
+
+        // Optimize trading opportunities
+        OptimizeTradingOpportunities();
+
+        // Execute trading logic
+        ExecuteTradingLogic();
+    }
+
+    // Disable trading
+    DisableTrading();
+}
+
+// Custom function to stop the robot
+void StopRobot()
+{
+    // Disable trading
+    DisableTrading();
+}
+
+// Custom function to initialize the robot
+void OnInit()
+{
+    // Set up chart events
+    ChartSetInteger(0, CHART_EVENT_OBJECT_CLICK, true);
+    ChartSetInteger(0, CHART_EVENT_OBJECT_DRAG, true);
+
+    // Set up trade events
+    Trade.SetExpertMagicNumber(123456); // Set expert magic number
+    Trade.SetExpertComment('NSA Prop Firm Robot Ftmo Passer'); // Set expert comment
+    Trade.SetExpertSignal(TRADE_SIGNAL_NONE); // Set expert signal
+}
+
+// Custom function to deinitialize the robot
+void OnDeinit(const int reason)
+{
+    // Add code here to clean up and deinitialize the robot
+}
+
+// Custom function to handle timer event
+void OnTimer()
+{
+    // Check if trading is enabled
+    if (IsTradingEnabled)
+    {
+        // Check if market is open
+        if (IsMarketOpen())
+        {
+            // Execute trading logic
+            ExecuteTradingLogic();
+        }
+    }
+}
+
+// Entry point of the program
+void OnStart()
+{
+    // Initialize the robot
+    OnInit();
+
+    // Start the robot
+    StartRobot();
+
+    // Stop the robot
+    StopRobot();
+
+    // Deinitialize the robot
+    OnDeinit(REASON_PROGRAM);
+}
